@@ -17,7 +17,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./:/node/hello-node
+      - ./:/node/dp-my-chat
     links:
       - mongodb:db
       - minio:minio

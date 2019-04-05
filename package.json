@@ -39,7 +39,8 @@
     "mocha": "^6.0.2",
     "mongoose": "^5.4.19",
     "nodemon": "^1.18.10",
-    "nyc": "^13.3.0"
+    "nyc": "^13.3.0",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",

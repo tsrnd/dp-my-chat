@@ -1,10 +1,10 @@
-# Hello-node.ts (Team1)
+# dp-my-chat (Team1)
 
 ### How To Run This Project (for development)
 - Download dependencies
 
 ```
-cd hello-node.ts
+cd dp-my-chat
 npm install
 ```
 

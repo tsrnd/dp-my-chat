@@ -17,8 +17,10 @@ class App {
         this.app.use(bodyParser.urlencoded({
             extended: false,
         }));
+        this.app.set('view engine', 'pug');
+        this.app.use(express.static(__dirname + '/public'));
+        this.app.set('views', __dirname + '/views');
     }
-
 }
 
 export default new App().app;
