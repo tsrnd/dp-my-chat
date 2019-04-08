@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "10.15"
+services:
+  - docker
+before_script:
+  - npm install
+  - docker-compose up --build -d
+  - sleep 3
+script:
+  - npm test
+after_script:
+  - docker-compose kill
