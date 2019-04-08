@@ -2,6 +2,7 @@ import { expect } from 'chai';
 
 const Calculator = require('./example'); // we can report a code coverage report
 
+
 const cal = new Calculator();
 
 describe('calculate', () => {
