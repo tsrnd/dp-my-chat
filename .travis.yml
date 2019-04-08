@@ -5,9 +5,11 @@ services:
   - docker
 before_script:
   - npm install
+  - npm run tslint
   - docker-compose up --build -d
   - sleep 3
 script:
+  - npm run build
   - npm test
 after_script:
   - docker-compose kill
