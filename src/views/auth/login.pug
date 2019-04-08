@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+html
+    head
+    title= Login
+    block links
+        link(rel='stylesheet', type='text/css', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='/css/style.css')
+    block scripts
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+    body
+        div(class="container")
+            div(class="row contain-row")
+                div(class="col-md-8 col-md-offset-2")
+                    div(class="panel panel-default")
+                        div(class="panel-heading") Login
+                        div(class="panel-body")
+                            form(class="form-horizontal" method="POST" action="/login")
+                                div(class="form-group")
+                                    label(for="username" class="col-md-4 control-label") User Name
+                                    div(class="col-md-6")
+                                        input(id="username" type="username" class="form-control cls-login" name="username" value="")
+                            
+                                div(class="form-group")
+                                    label(for="password" class="col-md-4 control-label") Password
+                                    div(class="col-md-6")
+                                        input(id="password" type="password" class="form-control cls-login" name="password")
+
+                                div(class="form-group")
+                                    div(class="col-md-8 col-md-offset-4")
+                                        button(type="submit" class="btn btn-primary") Login
+                                            
