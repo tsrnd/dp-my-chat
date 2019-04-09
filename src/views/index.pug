@@ -1,13 +1,177 @@
-<!DOCTYPE html>
+doctype html
 html
   head
-    title= title
-    block links
-        link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
-        link(rel='stylesheet', type='text/css', href='/css/style.css')
-    block scripts
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
-        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+    title Chat
+    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', rel='stylesheet')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.5.0/css/all.css', integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU', crossorigin='anonymous')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
+    script.
+      $(document).ready(function(){
+      $('#action_menu_btn').click(function(){
+      $('.action_menu').toggle();
+      });
+      });
+    link(rel='stylesheet', href='/css/index.css')
+  // Coded With Love By Mutiullah Samim
   body
-  div.container
-    h1 Welcome to dp-my-chat
+    .container-fluid.h-100
+      .row.justify-content-center.h-100
+        .col-md-4.col-xl-3.chat
+          .card.mb-sm-3.mb-md-0.contacts_card
+            .card-header
+              .input-group
+                input.form-control.search(type='text', placeholder='Search...', name='')
+                .input-group-prepend
+                  span.input-group-text.search_btn
+                    i.fas.fa-search
+            .card-body.contacts_body
+              ui.contacts-group
+                li.add
+                  .d-flex.bd-highlight 
+                    span Group Chat
+                    i.fa.fa-plus(aria-hidden='true')
+                li.active
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                      span.online_icon
+                    .user_info
+                      span Group 1
+                li
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='/images/no-img.png')
+                      span.online_icon.offline
+                    .user_info
+                      span Group 2
+              ui.contacts
+                li.add
+                  .d-flex.bd-highlight 
+                    span Direct Messages
+                    i.fa.fa-plus(aria-hidden='true')
+                li.active
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                      span.online_icon
+                    .user_info
+                      span Maryam Naz
+                      p Maryam is online
+                li
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg')
+                      span.online_icon.offline
+                    .user_info
+                      span Sahar Darya
+                      p Sahar left 7 mins ago
+                li
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='https://i.pinimg.com/originals/54/6e/6d/546e6d4c6ce4322e6aa3b2f8ca73ac28.jpg')
+                      span.online_icon
+                    .user_info
+                      span Yolduz Rafi
+                      p Yolduz is online
+                li
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='http://profilepicturesdp.com/wp-content/uploads/2018/07/sweet-girl-profile-pictures-9.jpg')
+                      span.online_icon.offline
+                    .user_info
+                      span Nargis Hawa
+                      p Nargis left 30 mins ago
+                li
+                  .d-flex.bd-highlight
+                    .img_cont
+                      img.rounded-circle.user_img(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+                      span.online_icon.offline
+                    .user_info
+                      span Khadija Mehr
+                      p Khadija left 50 mins ago
+            .card-footer
+        .col-md-8.col-xl-8.chat
+          .card
+            .card-header.msg_head
+              .d-flex.bd-highlight
+                .img_cont
+                  img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                  span.online_icon
+                .user_info
+                  span Chat with Maryam Naz
+                  p 1767 Messages
+                .video_cam
+                  span
+                    i.fas.fa-video
+                  span
+                    i.fas.fa-phone
+              span#action_menu_btn
+                i.fas.fa-ellipsis-v
+              .action_menu
+                ul
+                  li
+                    i.fas.fa-user-circle
+                    |  View profile
+                  li
+                    i.fas.fa-users
+                    |  Add to group
+                  li
+                    i.fas.fa-ban
+                    |  Block
+            .card-body.msg_card_body
+              .d-flex.justify-content-start.mb-4
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                .msg_cotainer
+                  | Hi, how are you samim?
+                  span.msg_time 8:40 AM, Today
+              .d-flex.justify-content-end.mb-4
+                .msg_cotainer_send
+                  | Hi Maryam i am good tnx how about you?
+                  span.msg_time_send 8:55 AM, Today
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+              .d-flex.justify-content-start.mb-4
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                .msg_cotainer
+                  | I am good too, thank you for your chat template
+                  span.msg_time 9:00 AM, Today
+              .d-flex.justify-content-end.mb-4
+                .msg_cotainer_send
+                  | You welcome Maryam
+                  span.msg_time_send 9:05 AM, Today
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+              .d-flex.justify-content-start.mb-4
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                .msg_cotainer
+                  | I am looking for your next templates
+                  span.msg_time 9:07 AM, Today
+              .d-flex.justify-content-end.mb-4
+                .msg_cotainer_send
+                  | Ok, thank you have a good day
+                  span.msg_time_send 9:10 AM, Today
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+              .d-flex.justify-content-start.mb-4
+                .img_cont_msg
+                  img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+                .msg_cotainer
+                  | Bye, see you
+                  span.msg_time 9:12 AM, Today
+            .card-footer
+              .input-group
+                .input-group-append
+                  span.input-group-text.attach_btn
+                    i.fas.fa-paperclip
+                textarea.form-control.type_msg(name='', placeholder='Type your message...')
+                .input-group-append
+                  span.input-group-text.send_btn
+                    i.fas.fa-location-arrow
