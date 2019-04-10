@@ -40,7 +40,8 @@
     "mongoose": "^5.4.19",
     "nodemon": "^1.18.10",
     "nyc": "^13.3.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
