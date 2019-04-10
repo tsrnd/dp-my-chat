@@ -9,7 +9,7 @@ const userModel = mongoose.model('User', User);
 export class AuthController {
     // Show form login
     public index(req: Request, resp: Response) {
-        resp.render('auth/login');
+        resp.render('login');
     }
     public login(req: Request, resp: Response) {
         userModel.findOne({'username': req.body.username}, (err, user) => {

@@ -107,7 +107,7 @@ span.input-group-addon i {
     font-size: 17px;
 }
 
-.login-button {
+.btn-register{
     margin-top: 5px;
 }
 
@@ -118,4 +118,7 @@ span.input-group-addon i {
 
 h3 {
     color: white
+}
+.return-login{
+    margin-left: 27%;
 }

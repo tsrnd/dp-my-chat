@@ -13,7 +13,7 @@ html(lang="en")
                 div#login-row.row.justify-content-center.align-items-center
                     div#login-column.col-md-6
                         div#login-box.col-md-12
-                            form#login-form.form(action="" method="post")
+                            form#login-form.form(action="/login" method="post")
                                 h3.text-center.text-info Login
                                 div.form-group
                                     label.text-info(for="username") Username:
@@ -21,13 +21,13 @@ html(lang="en")
                                     input#username.form-control(type="text" name="username")
                                 div.form-group
                                     label.text-info(for="password") Password:
-                                    input#password.form-control(type="text" name="password")
+                                    input#password.form-control(type="password" name="password")
                                 div.form-group
                                     label.text-info(for="remember-me")
                                         span Remember me
                                         span
                                             input#remember-me(name="remember-me" type="checkbox")
                                     br
-                                    input.btn.btn-info.btn-md(type="submit" name="submit" value="submit")
+                                    button.btn.btn-info.btn-md(type="submit" name="submit" id="btn-login") Submit
                                 div#register-link.text-right
-                                    a.text-info(href="/register") Register here
+                                    a.text-info(href="/register") Register
