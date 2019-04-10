@@ -12,7 +12,7 @@ export class AuthController {
         resp.render('login');
     }
     public login(req: Request, resp: Response) {
-        userModel.findOne({'username': req.body.username}, (err, user) => {
+        userModel.findOne({ 'username': req.body.username }, (err, user) => {
             if (err) {
                 console.log(err);
                 return resp.status(500).end();
@@ -28,11 +28,15 @@ export class AuthController {
                 expiresIn: 604800 // expires in 7 day
             });
             resp.cookie('token', token);
-            resp.setHeader('authorization', 'Bearer ' + token);
-            return resp.redirect('/');
+            resp.redirect('/');
         });
     }
     public showRegister(req: Request, resp: Response) {
         resp.render('register');
+    }
+
+    public logout(req: Request, resp: Response) {
+        resp.clearCookie('token');
+        resp.redirect('/login');
     }
 }

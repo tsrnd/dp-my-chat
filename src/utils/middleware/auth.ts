@@ -7,19 +7,12 @@ const user = mongoose.model('User', User);
 
 export class AuthMiddleWare {
     public authorization(req: Request, resp: Response, next: any) {
-        const authorizationHeader = req.headers['authorization'];
-        if (authorizationHeader == undefined) {
+        const token = req.cookies.token;
+        if (token == undefined) {
             console.log('Missing access token!');
             resp.redirect('/login');
             return;
         }
-        const tmps = authorizationHeader.split('Bearer ');
-        if (tmps.length <= 1) {
-            console.log('Wrong access token!');
-            resp.redirect('/login');
-            return;
-        }
-        const token = tmps[1];
         try {
             const decoded = jwt.verify(token, 'secret');
             user.findOne({ 'username': decoded['username'] })
