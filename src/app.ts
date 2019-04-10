@@ -2,6 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { Routes } from './routes/routes';
+import { ErrorHandler } from './utils/error-handler';
 
 class App {
     public app: express.Application;
@@ -10,6 +11,7 @@ class App {
         this.app = express();
         this.config();
         this.routePrv.routes(this.app);
+        this.app.use(ErrorHandler);
     }
 
     private config(): void {

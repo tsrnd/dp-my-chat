@@ -17,7 +17,7 @@ html(lang="en")
             h3.text-center.text-white.pt-5 REGISTER FORM
             div.row.main
                 div.main-login.main-center
-                    form(method="post" action="#")
+                    form(method="post" action="/register")
                         div.form-group
                             label.cols-sm-2.control-label(for="username") Username
                             div.cols-sm-10
@@ -40,6 +40,13 @@ html(lang="en")
                                         i.fa.fa-lock.fa-lg(aria-hidden="true")
                                     input#password.form-control(type="password" name="password"  placeholder="Enter your Password")
                         div.form-group
-                            a#button.btn.btn-primary.btn-lg.btn-block.login-button(href="https://deepak646.blogspot.com/" target="_blank" type="button") Register
+                            label.cols-sm-2.control-label(for="password") Confirm Password
+                            div.cols-sm-10
+                                div.input-group
+                                    span.input-group-addon
+                                        i.fa.fa-lock.fa-lg(aria-hidden="true")
+                                    input#password.form-control(type="password" name="confirm-password"  placeholder="Confirm your Password")
+                        div.form-group
+                            button#button.btn.btn-primary.btn-lg.btn-block.login-button(type="submit") Register
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
         script(src="js/bootstrap.min.js")
