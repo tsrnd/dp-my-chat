@@ -7,19 +7,28 @@ import * as jwt from 'jsonwebtoken';
 const userModel = mongoose.model('User', User);
 
 export class AuthController {
+    // Show form login
+    public index(req: Request, resp: Response) {
+        resp.render('auth/login');
+    }
     public login(req: Request, resp: Response) {
-        userModel.findOne({'username': req.body.username, 'password': Md5.init(req.body.password)}, (err, user) => {
+        userModel.findOne({'username': req.body.username}, (err, user) => {
             if (err) {
                 console.log(err);
-                resp.status(500).end();
+                return resp.status(500).end();
+            }
+            if (!user) {
+                return resp.status(404).end();
+            }
+            if (user['password'] != Md5.init(req.body.password)) {
+                return resp.status(400).end();
             }
             // generate token
             const token = jwt.sign({ id: user.id, username: user['username'] }, 'secret', {
-                expiresIn: 86400 // expires in 24 hours
+                expiresIn: 604800 // expires in 7 day
             });
-            resp.json({
-                token: token
-            });
+            resp.setHeader('authorization', 'Bearer ' + token);
+            return resp.redirect('/');
         });
     }
 }

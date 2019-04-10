@@ -9,19 +9,16 @@ export class AuthMiddleWare {
     public authorization(req: Request, resp: Response, next: any) {
         const authorizationHeader = req.headers['authorization'];
         if (authorizationHeader == undefined) {
-            resp.status(401).json({
-                errors: [{
-                    'msg': 'Missing access token!'
-                }]
-            });
+            console.log('Missing access token!');
+            resp.redirect('/login');
+            return;
         }
         const tmps = authorizationHeader.split('Bearer ');
+        console.log(tmps, '00000');
         if (tmps.length <= 1) {
-            resp.status(401).json({
-                errors: [{
-                    'msg': 'Wrong access token!'
-                }]
-            });
+            console.log('Wrong access token!');
+            resp.redirect('/login');
+            return;
         }
         const token = tmps[1];
         try {

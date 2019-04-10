@@ -7,13 +7,10 @@ export class Routes {
     public authMiddleware: AuthMiddleWare = new AuthMiddleWare();
     public routes(app): void {
         app.route('/')
-            .get((req: Request, res: Response) => {
+            .get(this.authMiddleware.authorization, (req: Request, res: Response) => {
                 res.render('index');
             });
-        app.route('/login')
-            .get((req: Request, res: Response) => {
-                res.render('auth/login');
-            });
+        app.get('/login', this.authController.index);
         app.post('/login', this.authController.login);
     }
 }
