@@ -11,7 +11,7 @@ class App {
         this.app = express();
         this.config();
         this.routePrv.routes(this.app);
-        this.app.use(ErrorHandler)
+        this.app.use(ErrorHandler);
     }
 
     private config(): void {
@@ -21,7 +21,7 @@ class App {
         }));
         this.app.set('view engine', 'pug');
         this.app.use(express.static(__dirname + '/public'));
-        this.app.set('views', __dirname + '/vizews');
+        this.app.set('views', __dirname + '/views');
     }
 }
 
