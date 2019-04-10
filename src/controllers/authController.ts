@@ -8,7 +8,7 @@ const userModel = mongoose.model('User', User);
 
 export class AuthController {
     // Show form login
-    public index(req: Request, resp: Response) {
+    public showLogin(req: Request, resp: Response) {
         resp.render('login');
     }
     public login(req: Request, resp: Response) {
@@ -24,11 +24,15 @@ export class AuthController {
                 return resp.status(400).end();
             }
             // generate token
-            const token = jwt.sign({ id: user.id, username: user['username'] }, 'secret', {
+            const token = jwt.sign({ id: user._id, username: user['username'] }, 'secret', {
                 expiresIn: 604800 // expires in 7 day
             });
+            resp.cookie('token', token);
             resp.setHeader('authorization', 'Bearer ' + token);
             return resp.redirect('/');
         });
+    }
+    public showRegister(req: Request, resp: Response) {
+        resp.render('register');
     }
 }

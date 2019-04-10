@@ -10,11 +10,8 @@ export class Routes {
             .get((req: Request, res: Response) => {
                 res.render('index');
             });
-        app.get('/login', this.authController.index);
+        app.get('/login', this.authController.showLogin);
         app.post('/login', this.authController.login);
-        app.route('/register')
-            .get((req: Request, res: Response) => {
-                res.render('register');
-            });
+        app.get('/register', this.authController.showRegister);
     }
 }

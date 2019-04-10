@@ -14,7 +14,6 @@ export class AuthMiddleWare {
             return;
         }
         const tmps = authorizationHeader.split('Bearer ');
-        console.log(tmps, '00000');
         if (tmps.length <= 1) {
             console.log('Wrong access token!');
             resp.redirect('/login');
@@ -23,7 +22,6 @@ export class AuthMiddleWare {
         const token = tmps[1];
         try {
             const decoded = jwt.verify(token, 'secret');
-            console.log(decoded['username']);
             user.findOne({ 'username': decoded['username'] })
                 .then(user => {
                     if (!user) {
