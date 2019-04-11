@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        link(href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css")
+        script(src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+        link(href="/css/login.css", rel="stylesheet")
+        title Login
+    body
+        div#login
+            h3.text-center.text-white.pt-5 LOGIN FORM
+            - if (msg)
+                h4=msg
+            div.container
+                div#login-row.row.justify-content-center.align-items-center
+                    div#login-column.col-md-6
+                        div#login-box.col-md-12
+                            form#login-form.form(action="/login" method="post")
+                                h3.text-center.text-info Login
+                                div.form-group
+                                    label.text-info(for="username") Username:
+                                    br
+                                    input#username.form-control(type="text" name="username")
+                                div.form-group
+                                    label.text-info(for="password") Password:
+                                    input#password.form-control(type="password" name="password")
+                                div.form-group
+                                    label.text-info(for="remember-me")
+                                        span Remember me
+                                        span
+                                            input#remember-me(name="remember-me" type="checkbox")
+                                    br
+                                    button.btn.btn-info.btn-md(type="submit" name="submit" id="btn-login") Login
+                                div#register-link.text-right
+                                    a.text-info(href="/register") Register

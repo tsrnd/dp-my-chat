@@ -2,6 +2,8 @@ import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as mongoose from 'mongoose';
 import { Routes } from './routes/routes';
+import * as cookie from 'cookie-parser';
+import { ErrorHandler } from './utils/error-handler';
 
 class App {
     public app: express.Application;
@@ -10,6 +12,7 @@ class App {
         this.app = express();
         this.config();
         this.routePrv.routes(this.app);
+        this.app.use(ErrorHandler);
     }
 
     private config(): void {
@@ -20,6 +23,7 @@ class App {
         this.app.set('view engine', 'pug');
         this.app.use(express.static(__dirname + '/public'));
         this.app.set('views', __dirname + '/views');
+        this.app.use(cookie());
     }
 }
 
