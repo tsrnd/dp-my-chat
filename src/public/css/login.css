@@ -24,3 +24,9 @@ body {
 .form-group {
     margin-bottom: 15px;
 }
+#btn-login {
+    margin-left: 42%;
+}
+#remember-me {
+    margin-left: 5px;
+}

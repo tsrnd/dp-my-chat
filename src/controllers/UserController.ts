@@ -6,10 +6,6 @@ import { Md5 } from 'md5-typescript';
 const user = mongoose.model('users', User);
 
 export class UserController {
-    public register(req: Request, res: Response, next: any) {
-        res.render('register');
-    }
-
     public create(req: Request, res: Response, next: any) {
         let params = req.body;
         user.findOne({ username: params.username }, (err, data) => {
