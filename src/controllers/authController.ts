@@ -24,7 +24,7 @@ export class AuthController {
                 return resp.status(400).end();
             }
             // generate token
-            const token = jwt.sign({ id: user._id, username: user['username'] }, 'secret', {
+            const token = jwt.sign({ id: user._id, username: user['username'], nickname: user['nickname'], user_profile_image: user['user_profile_image']}, 'secret', {
                 expiresIn: 604800 // expires in 7 day
             });
             resp.cookie('token', token);

@@ -12,13 +12,22 @@ html
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
     script.
       $(document).ready(function(){
-      $('#action_menu_btn').click(function(){
-      $('.action_menu').toggle();
-      });
+        $(document).click(function(e) {
+          if (e.target.id === 'action_menu_btn') {
+            $('.action_menu').toggle();
+            $('.action_menu_profile').hide();
+          } else if(e.target.id === 'action_profile') {
+            $('.action_menu_profile').toggle();
+            $('.action_menu').hide();
+          } else {
+            $('.action_menu, .action_menu_profile').hide();
+          }
+        });
       });
     link(rel='stylesheet', href='/css/index.css')
   // Coded With Love By Mutiullah Samim
   body
+    include partials/header.pug
     .container-fluid.h-100
       .row.justify-content-center.h-100
         .col-md-4.col-xl-3.chat
@@ -110,8 +119,8 @@ html
                     i.fas.fa-video
                   span
                     i.fas.fa-phone
-              span#action_menu_btn
-                i.fas.fa-ellipsis-v
+              span
+                i#action_menu_btn.fas.fa-ellipsis-v
               .action_menu
                 ul
                   li
