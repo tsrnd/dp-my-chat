@@ -9,6 +9,8 @@ html(lang="en")
     body
         div#login
             h3.text-center.text-white.pt-5 LOGIN FORM
+            - if (msg)
+                h4=msg
             div.container
                 div#login-row.row.justify-content-center.align-items-center
                     div#login-column.col-md-6
