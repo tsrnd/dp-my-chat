@@ -6,10 +6,6 @@
     text-decoration: none;
 }
 
-.logo a:hover {
-    color: red;
-}
-
 .logo .left-header {
     display: inline-block;
     font-family: 'Patrick Hand', cursive;
@@ -64,4 +60,11 @@
     padding-left: 10px;
     font-family: 'Patrick Hand', cursive;
     color: blue;
+}
+
+#action_profile {
+    margin-left: 5px;
+}
+.logo a:hover {
+    color: red;
 }
