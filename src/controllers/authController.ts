@@ -9,12 +9,14 @@ const userModel = mongoose.model('User', User);
 export class AuthController {
     // Show form login
     public showLogin(req: Request, resp: Response) {
+        if (req.cookies.token) {
+            resp.redirect('/');
+        }
         resp.render('login');
     }
     public login(req: Request, resp: Response) {
         userModel.findOne({ 'username': req.body.username }, (err, user) => {
             if (err) {
-                console.log(err);
                 return resp.status(500).end();
             }
             if (!user) {
@@ -23,8 +25,11 @@ export class AuthController {
             if (user['password'] != Md5.init(req.body.password)) {
                 return resp.status(400).end();
             }
+            // clear old token
+            resp.clearCookie('token');
+
             // generate token
-            const token = jwt.sign({ id: user._id, username: user['username'] }, 'secret', {
+            const token = jwt.sign({ id: user.id }, 'secret', {
                 expiresIn: 604800 // expires in 7 day
             });
             resp.cookie('token', token);
@@ -36,7 +41,6 @@ export class AuthController {
     }
 
     public logout(req: Request, resp: Response) {
-        resp.clearCookie('token');
-        resp.redirect('/login');
+        resp.clearCookie('token').redirect('login');
     }
 }
