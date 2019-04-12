@@ -14,7 +14,6 @@ export class AuthController {
     public login(req: Request, resp: Response) {
         userModel.findOne({ 'username': req.body.username }, (err, user) => {
             if (err) {
-                console.log(err);
                 return resp.status(500).end();
             }
             if (!user) {

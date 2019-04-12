@@ -9,7 +9,6 @@ export class AuthMiddleWare {
     public authorization(req: Request, resp: Response, next: any) {
         const token = req.cookies.token;
         if (token == undefined) {
-            console.log('Missing access token!');
             resp.redirect('/login');
             return;
         }
