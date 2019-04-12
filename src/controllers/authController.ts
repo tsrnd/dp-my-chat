@@ -23,9 +23,9 @@ export class AuthController {
             if (user['password'] != Md5.init(req.body.password)) {
                 return resp.status(400).end();
             }
-            //clear old token
+            // clear old token
             resp.clearCookie('token');
-            
+
             // generate token
             const token = jwt.sign({ id: user.id }, 'secret', {
                 expiresIn: 604800 // expires in 7 day

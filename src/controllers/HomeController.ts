@@ -17,7 +17,7 @@ export class HomeController {
             if (!user) {
                 return resp.status(404).end();
             }
-            
+
             resp.render('index', {'userLogin' : user});
         });
     }
