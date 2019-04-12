@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import { Request, Response } from 'express';
 import User from '../models/User';
 import { Md5 } from 'md5-typescript';
+import { signedCookie } from 'cookie-parser';
 
 const user = mongoose.model('users', User);
 
@@ -31,6 +32,35 @@ export class UserController {
                     res.redirect('/login');
                 }
             );
+        });
+    }
+    public getData(req: Request, resp: Response) {
+        user.findOne({ id: req.params.id}, (err, user) => {
+            if (!user) {
+                return resp.status(404).end();
+            }
+            if (err) {
+                return resp.status(500).end();
+            }
+            resp.render('users/edit', {
+                title: 'Edit Users',
+                data: user
+            });
+        });
+    }
+    public update(req: Request, resp: Response) {
+        let userUpdate = {
+            username: req.body.username,
+            nickname: req.body.nickname,
+        };
+        user.findOneAndUpdate({ id: req.params.id }, userUpdate, (error, data) => {
+            if (!data) {
+                return resp.status(404).end();
+            }
+            if (error) {
+                return resp.status(500).end();
+            }
+            resp.redirect(`/user/${data.id}`);
         });
     }
 }
