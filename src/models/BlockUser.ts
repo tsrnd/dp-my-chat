@@ -3,23 +3,19 @@ import { Counter } from '../models/Counter';
 
 const Schema = mongoose.Schema;
 
-export const Message = new Schema({
+export const BlockUser = new Schema({
     id: {
         type: Number,
         unique: true,
         min: 1
     },
-    room_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Room',
-    },
-    user_id_send: {
+    user_id_blocked: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    content: {
-        type: String,
-        unique: true
+    user_id_blocking: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
     },
     created_at: {
         type: Date,
@@ -32,9 +28,9 @@ export const Message = new Schema({
 });
 
 
-Message.pre('save', function(next) {
+BlockUser.pre('save', function(next) {
     Counter.findByIdAndUpdate(
-        'messages',
+        'blockusers',
         { $inc: { seq: 1 } },
         { new: true, upsert: true }
     , (error: any, counter: any) => {
@@ -46,4 +42,4 @@ Message.pre('save', function(next) {
     });
 });
 
-export default Message;
+export default BlockUser;
