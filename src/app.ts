@@ -5,6 +5,8 @@ import { Routes } from './routes/routes';
 import * as cookie from 'cookie-parser';
 import { ErrorHandler } from './utils/error-handler';
 
+const expressValidator = require('express-validator');
+
 class App {
     public app: express.Application;
     public routePrv: Routes = new Routes();
@@ -20,6 +22,7 @@ class App {
         this.app.use(bodyParser.urlencoded({
             extended: false,
         }));
+        this.app.use(expressValidator());
         this.app.set('view engine', 'pug');
         this.app.use(express.static(__dirname + '/public'));
         this.app.set('views', __dirname + '/views');

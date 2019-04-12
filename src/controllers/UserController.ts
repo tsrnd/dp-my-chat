@@ -2,12 +2,18 @@ import * as mongoose from 'mongoose';
 import { Request, Response } from 'express';
 import User from '../models/User';
 import { Md5 } from 'md5-typescript';
+import { registerValidate } from '../utils/validate/user';
 
 const user = mongoose.model('users', User);
 
 export class UserController {
     public create(req: Request, res: Response, next: any) {
         let params = req.body;
+        let err = registerValidate(req);
+        console.log(err, '++++++++++');
+        if (err) {
+            return res.render('register', {errors: err});
+        }
         user.findOne({ username: params.username }, (err, data) => {
             if (err) {
                 res.status(500);
