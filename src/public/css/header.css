@@ -1,0 +1,70 @@
+.logo {
+    margin: auto 10px 15px 10px;
+}
+.logo a {
+    color: #f9e0a2;
+    text-decoration: none;
+}
+
+.logo .left-header {
+    display: inline-block;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 35px;
+}
+.logo .left-header span {
+    margin-left: 7px;
+}
+.logo .right-header {
+    display: inline-block;
+    font-size: 25px;
+}
+
+.logo .right-header a{
+    color: #17a2b8;
+}
+
+.action_menu_profile{
+    z-index: 1;
+    position: absolute;
+    padding: 15px 0;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border-radius: 15px;
+    top: 40px;
+    /* right: 15px; */
+    display: none;
+}
+.action_menu_profile ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.action_menu_profile ul li{
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+.action_menu_profile ul li i{
+    padding-right: 10px;
+}
+.action_menu_profile ul li:hover{
+    cursor: pointer;
+    background-color: rgb(108, 191, 194);
+}
+.img_url{
+    width: 55px;
+    height: 55px;
+}
+.user_name {
+    margin-top: -10px;
+    padding-left: 10px;
+    font-family: 'Patrick Hand', cursive;
+    color: blue;
+}
+
+#action_profile {
+    margin-left: 5px;
+}
+.logo a:hover {
+    color: red;
+}

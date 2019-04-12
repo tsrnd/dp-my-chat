@@ -1,0 +1,33 @@
+
+//css
+link(rel="stylesheet", href="/css/header.css")
+// Logo
+div.logo.form-group
+  div.left-header.col-md-9
+    a(href='/')
+      img(src="/images/logo1.png", alt="", srcset="")
+      span Chat with Me
+  div.right-header.col-md-3
+    a(href='#')
+      if userLogin.user_profile_image != undefined
+        img.img_url(src = userLogin.user_profile_image)
+      else 
+        img.img_url(src="/images/no-img.png")
+      span#action_profile #{userLogin.username}
+    small.user_name (#{userLogin.nickname})
+      .action_menu_profile
+        ul
+          li
+            i.fas.fa-user-circle
+            |  Profile
+          li
+            form#logout-form.form(action="/logout" method="post")
+              p#logout-submit
+                i.fas.fa-users
+                |  Logout
+script.
+  $(document).ready(function(){
+    $('#logout-submit').click(function(){
+      $('#logout-form').submit();
+    });
+  });
