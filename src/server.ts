@@ -1,7 +1,15 @@
 import app from './app';
 import { db } from './utils/db';
+import { Server } from 'http';
+import * as SocketIO from 'socket.io';
+import Socket from './socket/Socket';
 
-app.listen(3000, () => {
+let server = new Server(app);
+let sockerIO = new SocketIO(server);
+
+new Socket(sockerIO);
+
+server.listen(3000, () => {
     console.log('server is running listening on port ' + 3000);
 });
 
