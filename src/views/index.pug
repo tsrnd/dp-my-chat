@@ -10,8 +10,14 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
+    script(type='text/javascript', src='/socket.io/socket.io.js')
+    script(src='/js/common.js')
     script.
       $(document).ready(function(){
+        var token = getCookie('token');
+        var socket = io.connect('/chat-direct', {
+          'query': 'token=' + token
+        });
         $(document).click(function(e) {
           if (e.target.id === 'action_menu_btn') {
             $('.action_menu').toggle();

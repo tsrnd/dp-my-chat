@@ -1,3 +1,5 @@
+import * as socketioJwt from 'socketio-jwt';
+
 class Socket {
     public io: any;
     constructor(io) {
@@ -6,13 +8,19 @@ class Socket {
     }
 
     private config(): void {
-        this.io.on('connection', function(socket) {
-            console.log('SocketID ' + socket.id + ' connected');
+        this.io.use(socketioJwt.authorize({
+            secret: 'secret',
+            handshake: true,
+            decodedPropertyName: 'decoded_token',
+        }));
+        let chatIO = this.io.of('/chat-direct');
+        chatIO.on('connection', function(socket: any) {
+            console.log('SocketID ' + socket.id + ' connected', socket.handshake.query.token);
+        });
 
-            // Whenever someone disconnects this piece of code executed
-            socket.on('disconnect', function () {
-                console.log('SocketID ' + socket.id + ' disconnected');
-            });
+        let roomIO = this.io.of('/chat-room');
+        roomIO.on('connection', function(socket: any) {
+            console.log('Client connected room:', socket.id);
         });
     }
 }
