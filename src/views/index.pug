@@ -2,6 +2,7 @@ doctype html
 html
   head
     title Chat
+    //- link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')
     link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', rel='stylesheet')
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js')
     script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
@@ -10,6 +11,10 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
+    link(href="/css/profile.css", rel="stylesheet")
     script.
       $(document).ready(function(){
         $(document).click(function(e) {
@@ -24,6 +29,7 @@ html
           }
         });
       });
+    
     link(rel='stylesheet', href='/css/index.css')
   // Coded With Love By Mutiullah Samim
   body
@@ -123,9 +129,9 @@ html
                 i#action_menu_btn.fas.fa-ellipsis-v
               .action_menu
                 ul
-                  li
+                  li(data-toggle='modal', data-target='#modalProfile')
                     i.fas.fa-user-circle
-                    |  View profile
+                      |  View profile
                   li
                     i.fas.fa-users
                     |  Add to group
@@ -184,3 +190,21 @@ html
                 .input-group-append
                   span.input-group-text.send_btn
                     i.fas.fa-location-arrow
+  #modalProfile.modal.fade(role='dialog')
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-body
+          .container.h-100
+            .row.h-100.justify-content-center.align-items-center
+              .card-profile
+                .card-h
+                  .profile_pic
+                    img(src='https://bootsnipp.com/img/avatars/92ff0456eb6106d0c1ae8ab5f1fe0afe2d2d25f2.jpg')
+                .card-body-profile
+                  .d-lfex.justify-content-center.flex-column
+                    .name_container
+                      .name Samim
+                    .nickname Kuala Lumpur, Malaysia
+                  .follow
+                .card-footer-profile
+                  button.btn-cancel.btn-danger(type='button', data-dismiss='modal') Cancel
