@@ -11,7 +11,6 @@ export class HomeController {
         let userDecoded: any = jwt.decode(token, {complete: true});
         userModel.findOne({ 'id': userDecoded.payload.id }, (err, user) => {
             if (err) {
-                console.log(err);
                 return resp.status(500).end();
             }
             if (!user) {
