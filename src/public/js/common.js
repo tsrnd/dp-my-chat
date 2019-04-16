@@ -2,12 +2,31 @@
     $('#logout-submit').click(function(){
       $('#logout-form').submit();
     });
+    $("#editname").hide();
+    $("#editnick").hide();
+
     $('.name').click(function(){
-      document.getElementById("username").innerHTML = "<input type='text'/>";
+      $("#username").hide();
+      $("#editname").show();
     })
     $('.nickname').click(function(){
-      document.getElementById("nickname").innerHTML = "<input type='text'/>";
+      $("#nickname").hide();
+      $("#editnick").show();
     })
+    $(document).mouseup(function(e){
+      var container = $("#editnick");
+      if(!container.is(e.target) && container.has(e.target).length === 0){
+        $("#editnick").hide();
+        $("#nickname").show();
+      }
+    });
+    $(document).mouseup(function(e){
+      var container = $("#editname");
+      if(!container.is(e.target) && container.has(e.target).length === 0){
+        $("#editname").hide();
+        $("#username").show();
+      }
+    });
   });
   function readURL(input) {
     if (input.files && input.files[0]) {
