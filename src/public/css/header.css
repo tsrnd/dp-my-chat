@@ -73,3 +73,7 @@
 .small, small {
     font-size: 60% !important;
 }
+
+.action_menu_profile ul li:nth-child(2){
+    height: 42px;
+}
