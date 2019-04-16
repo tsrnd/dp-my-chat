@@ -49,7 +49,10 @@ div.logo.form-group
                   .d-lfex.justify-content-center.flex-column
                     .name_container
                       .name#username #{userLogin.username}
-                    .nickname#nickname (#{userLogin.nickname})
+                      input.name#editname(type="text" value=userLogin.username)
+                    .nickname_container
+                      .nickname#nickname (#{userLogin.nickname})
+                      input.nickname#editnick(type="text" value=userLogin.nickname)
                   .follow
                 .card-footer-profile
                   button.btn-cancel.btn-danger(type='button', data-dismiss='modal') Cancel
