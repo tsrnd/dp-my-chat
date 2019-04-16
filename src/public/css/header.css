@@ -30,7 +30,8 @@
     background-color: rgba(0,0,0,0.5);
     color: white;
     border-radius: 15px;
-    top: 40px;
+    right: 168px;
+    top: 38px;
     /* right: 15px; */
     display: none;
 }
@@ -67,4 +68,8 @@
 }
 .logo a:hover {
     color: red;
+}
+
+.small, small {
+    font-size: 60% !important;
 }
