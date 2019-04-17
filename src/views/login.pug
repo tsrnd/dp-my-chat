@@ -20,15 +20,17 @@ html(lang="en")
                                 div.form-group
                                     label.text-info(for="username") Username:
                                     input#username.form-control(type="text" name="username")
+                                    label(id="username-error" class="error")
                                 div.form-group
                                     label.text-info(for="password") Password:
                                     input#password.form-control(type="password" name="password")
+                                    label(id="password-error" class="error")
                                 div.form-group
                                     label.text-info(for="remember-me")
                                         span Remember me
                                         span
                                             input#remember-me(name="remember-me" type="checkbox")
                                     br
-                                    button.btn.btn-info.btn-md(type="submit" name="submit" id="btn-login") Login
+                                    button.btn.btn-info.btn-md(name="submit" id="btn-login") Login
                                 div#register-link.text-right
                                     a.text-info(href="/register") Register

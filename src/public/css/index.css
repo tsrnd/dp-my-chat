@@ -240,4 +240,6 @@ background-color: rgba(0,0,0,0.3) !important;
 .add i {
     color: #ffff;
     margin-left: 5px;
+    margin-top: 8px;
+    font-size: 12px;
 }

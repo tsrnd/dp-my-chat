@@ -12,7 +12,13 @@ html(lang="en")
         link(href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css')
         title Register
         link(href="/css/register.css", rel="stylesheet")
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        
+        script(src="js/register.js")
     body
+        include partials/modalError
         div.container
             h3.text-center.text-white.pt-5 REGISTER FORM
             div.row.main
@@ -41,8 +47,6 @@ html(lang="en")
                                     input#password.form-control(type="password" name="password"  placeholder="Enter your Password")
                         div.form-group
                             div(class="btn-register text-center")
-                                button.btn.btn-primary(type="submit") Register
+                                button.btn.btn-primary(id="btn-register") Register
                     div(class="return-login")
                                 a(href="/login") Have an account? Login
-        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
-        script(src="js/bootstrap.min.js")
