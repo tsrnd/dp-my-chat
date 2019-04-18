@@ -9,12 +9,14 @@ const userModel = mongoose.model('User', User);
 export class AuthController {
     // Show form login
     public showLogin(req: Request, resp: Response) {
+        if (req.cookies.token) {
+            resp.redirect('/');
+        }
         resp.render('login');
     }
     public login(req: Request, resp: Response) {
         userModel.findOne({ 'username': req.body.username }, (err, user) => {
             if (err) {
-                console.log(err);
                 return resp.status(500).end();
             }
             if (!user) {
@@ -39,7 +41,6 @@ export class AuthController {
     }
 
     public logout(req: Request, resp: Response) {
-        resp.clearCookie('token');
-        resp.redirect('/login');
+        resp.clearCookie('token').redirect('login');
     }
 }
