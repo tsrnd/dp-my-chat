@@ -6,6 +6,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.m
 script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
 link(href="/css/profile.css", rel="stylesheet")
 script(src='/js/common.js')
+script(src='/js/profile.js')
 // Logo
 div.logo.form-group
   div.left-header.col-md-9
@@ -19,16 +20,16 @@ div.logo.form-group
       else 
         img.img_url(src="/images/no-img.png")
       span#action_profile #{userLogin.username}
-    small.user_name (#{userLogin.nickname})
-      .action_menu_profile
-        ul
-          li(aria-hidden='true' data-toggle='modal', data-target='#myModal')
-            i#my-profile.fas.fa-user-circle
-              |  Profile
-          li
-            form#logout-form.form(action="/logout" method="post")
-              p#logout-submit
-                i.fas.fa-users
+    small.user_name#nick (#{userLogin.nickname})
+    .action_menu_profile
+      ul
+        li(aria-hidden='true' data-toggle='modal', data-target='#myModal')
+          i#my-profile.fas.fa-user-circle
+            |  Profile
+        li
+          form#logout-form.form(action="/logout" method="post")
+            p#logout-submit
+              i.fas.fa-users
                 |  Logout
 #myModal.modal.fade(role='dialog')
     .modal-dialog.modal-lg

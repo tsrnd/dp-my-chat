@@ -21,8 +21,7 @@ export class Routes {
         app.route('/register')
             .get(this.authController.showRegister)
             .post(this.userController.create);
-        app.route('/user/:id')
-            .get('/edit', this.userController.getData)
-            .put(this.userController.update);
+        app.route('/user')
+            .put(this.authMiddleware.authorization, this.userController.update);
     }
 }
