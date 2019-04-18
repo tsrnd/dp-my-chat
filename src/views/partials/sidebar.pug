@@ -1,0 +1,41 @@
+.col-md-4.col-xl-3.chat
+  .card.mb-sm-3.mb-md-0.contacts_card
+    .card-header
+      .input-group
+        input.form-control.search(type='text', placeholder='Search...', name='')
+        .input-group-prepend
+          span.input-group-text.search_btn
+            i.fas.fa-search
+    .card-body.contacts_body
+      ui.contacts-group
+        li.add
+          .d-flex.bd-highlight 
+            span(id="group-chat") Group Chat
+            i.fa.fa-plus(aria-hidden='true')
+        each myRoom in myRooms    
+          li
+            .d-flex.bd-highlight
+              .img_cont
+                img.rounded-circle.room_img(src='/images/room-img.png')
+              .user_info
+                a(id="room-online" href="#")=myRoom.name
+      ui.contacts
+        li.add
+          .d-flex.bd-highlight 
+            span Direct Messages
+            i.fa.fa-plus(aria-hidden='true')
+            - var userindex = 0
+        each user in listUsers
+          - userindex++
+          li
+            .d-flex.bd-highlight
+              .img_cont
+                if user.user_profile_image != undefined
+                  img.rounded-circle.user_img(src=user.user_profile_image alt="user picture")
+                else
+                  img.rounded-circle.user_img(src='/images/no-img.png' alt="user picture")
+                span.online_icon
+              .user_info
+                a(id="user-online"+userindex href="#")=user.username
+                p=user.username + ' is online'
+    .card-footer
