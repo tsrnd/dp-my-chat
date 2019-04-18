@@ -1,5 +1,7 @@
 $(document).ready(function () {
     $('#btn-login').click((event) => {
+        $('#username-error').text("");
+        $('#password-error').text("");
         event.preventDefault();
         $.post({
             url: '/login',
