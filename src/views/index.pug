@@ -8,13 +8,19 @@ html
     script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
     link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.5.0/css/all.css', integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU', crossorigin='anonymous')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
-    link(href="/css/profile.css", rel="stylesheet")
+    script(type='text/javascript', src='http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js')
+    script(src='http://jqueryvalidation.org/files/dist/jquery.validate.min.js')
+    script(src='http://jqueryvalidation.org/files/dist/additional-methods.min.js')
+    script(src='/socket.io/socket.io.js')
+    script(src='/js/common.js')
+    script(src='/js/chat-room.js')
+    script(src='/js/jquery.validate.js')
+    script(src='/js/jquery.validate.min.js')
     script.
       $(document).ready(function(){
         $(document).click(function(e) {
@@ -29,7 +35,7 @@ html
           }
         });
       });
-    
+
     link(rel='stylesheet', href='/css/index.css')
   // Coded With Love By Mutiullah Samim
   body
@@ -46,24 +52,32 @@ html
                     i.fas.fa-search
             .card-body.contacts_body
               ui.contacts-group
-                li.add
+                li#addGroup.add
                   .d-flex.bd-highlight 
                     span Group Chat
-                    i.fa.fa-plus(aria-hidden='true')
-                li.active
-                  .d-flex.bd-highlight
-                    .img_cont
-                      img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
-                      span.online_icon
-                    .user_info
-                      span Group 1
-                li
-                  .d-flex.bd-highlight
-                    .img_cont
-                      img.rounded-circle.user_img(src='/images/no-img.png')
-                      span.online_icon.offline
-                    .user_info
-                      span Group 2
+                    i.fa.fa-plus(aria-hidden='true' data-toggle='modal', data-target='#createRoomModal' onclick='myClick()')
+                    #createRoomModal.modal
+                      .modal-dialog
+                        .modal-content
+                          .modal-header
+                            h6.modal-title Create Group Chat
+                            button.close(type='button', data-dismiss='modal') ×
+                          .modal-body
+                            form#createRoomForm
+                              input#txtRoomName(type='text' name='roomname' placeholder='Enter room name')
+                              br
+                              input#txtUsername(type='text', oninput='showCustomers()', placeholder='Search users')
+                              #checkbox
+                              button#btnCreateRoom.btn.btn-primary(type='submit') OK
+                              button.btn.btn-danger(type='button', data-dismiss='modal') Close
+                each room in rooms
+                  li
+                    .d-flex.bd-highlight
+                      .img_cont
+                        img.rounded-circle.user_img(src='/images/no-img.png')
+                        span.online_icon
+                      .user_info
+                        span= room.name
               ui.contacts
                 li.add
                   .d-flex.bd-highlight 
@@ -118,7 +132,7 @@ html
                   img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
                   span.online_icon
                 .user_info
-                  span Chat with Maryam Naz
+                  span#currentRoom Chat with Maryam Naz
                   p 1767 Messages
                 .video_cam
                   span
