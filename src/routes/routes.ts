@@ -5,6 +5,7 @@ import { UserController } from '../controllers/UserController';
 import { HomeController } from '../controllers/HomeController';
 import { Logger } from '../utils/logger';
 import { ErrorHandler } from '../utils/error-handler';
+import * as validate from '../utils/validate';
 
 export class Routes {
     public authController: AuthController = new AuthController();
@@ -16,10 +17,10 @@ export class Routes {
         app.route('/')
             .get(this.authMiddleware.authorization, this.homeController.index);
         app.get('/login', this.authController.showLogin);
-        app.post('/login', this.authController.login);
+        app.post('/login', validate.validateLogin(), this.authController.login);
         app.post('/logout', this.authController.logout);
         app.route('/register')
             .get(this.authController.showRegister)
-            .post(this.userController.create);
+            .post(validate.validateRegister(), this.userController.create);
     }
 }

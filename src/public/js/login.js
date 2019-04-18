@@ -1,24 +1,32 @@
-$(document).ready(function() {
-    $("#login-form").validate({
-        rules: {
-            username: {
-                required: true,
-                minlength: 4,
+$(document).ready(function () {
+    $('#btn-login').click((event) => {
+        $('#username-error').text("");
+        $('#password-error').text("");
+        event.preventDefault();
+        $.post({
+            url: '/login',
+            data: {
+                username: $('#username').val(),
+                password: $('#password').val(),
             },
-            password: {
-                required: true,
-                minlength: 4,
+            success: resp => {
+                window.location.reload();
             },
-        },
-        messages: {
-            username: {
-                required: "Please input your username",
-                minlength: "Usernam has more than 4 characters"
-            },
-            password: {
-                required: "Please input your password",
-                minlength: "Password has more than 4 characters"
-            },
-        }
+            error: resp => {
+                if (resp.status == 400) {
+                    let errors = resp.responseJSON.errors;
+                    console.log(errors);
+                    errors.forEach(element => {
+                        $('#' + element.param + '-error')
+                            .html(element.msg)
+                            .show();
+                    });
+                } else if (resp.status == 404) {
+                    $('#username-error').html(resp.responseJSON.errors).show();
+                } else {
+                    alert('Internal server error');
+                }
+            }
+        });
     });
 });
