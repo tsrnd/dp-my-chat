@@ -23,7 +23,7 @@ export class HomeController {
                     return resp.status(500).end();
                 }
                 resp.render('index', { 'userLogin': user, 'rooms': rooms });
-            });
+            }).sort({ created_at: -1 });
         });
     }
 }

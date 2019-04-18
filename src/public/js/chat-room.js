@@ -26,6 +26,14 @@ $(document).ready(function () {
                 required: true,
             }
         },
+        messages: {
+            'roomname': {
+                required: "Room name is required",
+            },
+            'users[]': {
+                required: "Please choose member",
+            }
+        },
         submitHandler: function (form) {
             var selected_value = new Array();
             $(".messageCheckbox:checked").each(function () {
