@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose';
 import { Routes } from './routes/routes';
 import * as cookie from 'cookie-parser';
 import { ErrorHandler } from './utils/error-handler';
+import * as methodOverride from 'method-override';
 
 class App {
     public app: express.Application;
@@ -24,6 +25,7 @@ class App {
         this.app.use(express.static(__dirname + '/public'));
         this.app.set('views', __dirname + '/views');
         this.app.use(cookie());
+         this.app.use(methodOverride('_method'));
     }
 }
 

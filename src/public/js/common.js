@@ -5,10 +5,6 @@
     $("#editname").hide();
     $("#editnick").hide();
 
-    $('.name').click(function(){
-      $("#username").hide();
-      $("#editname").show();
-    })
     $('.nickname').click(function(){
       $("#nickname").hide();
       $("#editnick").show();
@@ -18,13 +14,6 @@
       if(!container.is(e.target) && container.has(e.target).length === 0){
         $("#editnick").hide();
         $("#nickname").show();
-      }
-    });
-    $(document).mouseup(function(e){
-      var container = $("#editname");
-      if(!container.is(e.target) && container.has(e.target).length === 0){
-        $("#editname").hide();
-        $("#username").show();
       }
     });
   });
