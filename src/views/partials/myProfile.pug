@@ -1,0 +1,26 @@
+#myModal.modal.fade(role='dialog')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-body
+        .container.h-100
+          .row.h-100.justify-content-center.align-items-center
+            .card-profile
+              .card-h
+                .profile_pic
+                  if userLogin.user_profile_image != undefined
+                    img(src = userLogin.user_profile_image)
+                  else 
+                    label(for="imgInp")
+                      img(src="/images/no-img.png")
+                    input#imgInp(type='file')
+              .card-body-profile
+                .d-lfex.justify-content-center.flex-column
+                  .name_container
+                    .name#username #{userLogin.username}
+                    input.name#editname(type="text" value=userLogin.username)
+                  .nickname_container
+                    .nickname#nickname (#{userLogin.nickname})
+                    input.nickname#editnick(type="text" value=userLogin.nickname)
+                .follow
+              .card-footer-profile
+                button.btn-cancel.btn-danger(type='button', data-dismiss='modal') Cancel

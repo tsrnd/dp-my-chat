@@ -205,8 +205,8 @@ background-color: rgba(0,0,0,0.3) !important;
     background-color: rgba(0,0,0,0.5);
     color: white;
     border-radius: 15px;
-    top: 30px;
-    right: 15px;
+    top: 3px;
+    right: 34px;
     display: none;
 }
 .action_menu ul{
@@ -240,4 +240,11 @@ background-color: rgba(0,0,0,0.3) !important;
 .add i {
     color: #ffff;
     margin-left: 5px;
+}
+
+.room_img {
+    height: 70px;
+    width: 70px;
+    border: 8px solid #f5f6fa;
+
 }
