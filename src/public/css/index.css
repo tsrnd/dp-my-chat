@@ -239,8 +239,8 @@ body, html {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 15px;
-    top: 30px;
-    right: 15px;
+    top: 3px;
+    right: 34px;
     display: none;
 }
 
@@ -314,4 +314,10 @@ label.error {
     display: block;
     color: red;
     margin-bottom: 0px;
+}
+
+.room_img {
+    height: 70px;
+    width: 70px;
+    border: 8px solid #f5f6fa;
 }

@@ -1,0 +1,55 @@
+.col-md-4.col-xl-3.chat
+  .card.mb-sm-3.mb-md-0.contacts_card
+    .card-header
+      .input-group
+        input.form-control.search(type='text', placeholder='Search...', name='')
+        .input-group-prepend
+          span.input-group-text.search_btn
+            i.fas.fa-search
+    .card-body.contacts_body
+      ui.contacts-group
+        li#addGroup.add
+          .d-flex.bd-highlight
+            span Group Chat
+            i.fa.fa-plus(aria-hidden='true' data-toggle='modal', data-target='#createRoomModal' onclick='myClick()')
+            #createRoomModal.modal
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    h6.modal-title Create Group Chat
+                    button.close(type='button', data-dismiss='modal') ×
+                  .modal-body
+                    form#createRoomForm
+                      input#txtRoomName(type='text' name='roomname' placeholder='Enter room name')
+                      br
+                      input#txtUsername(type='text', oninput='showCustomers()', placeholder='Search users')
+                      #checkbox
+                      button#btnCreateRoom.btn.btn-primary(type='submit') OK
+                      button.btn.btn-danger(type='button', data-dismiss='modal') Close
+        each myRoom in myRooms
+          li
+            .d-flex.bd-highlight
+              .img_cont
+                img.rounded-circle.room_img(src='/images/room-img.png')
+              .user_info
+                a(id="room-online" href="#")=myRoom.name
+      ui.contacts
+        li.add
+          .d-flex.bd-highlight 
+            span Direct Messages
+            i.fa.fa-plus(aria-hidden='true')
+            - var userindex = 0
+        each user in listUsers
+          - userindex++
+          li
+            .d-flex.bd-highlight
+              .img_cont
+                if user.user_profile_image != undefined
+                  img.rounded-circle.user_img(src=user.user_profile_image alt="user picture")
+                else
+                  img.rounded-circle.user_img(src='/images/no-img.png' alt="user picture")
+                span.online_icon
+              .user_info
+                a(id="user-online"+userindex href="#")=user.username
+                p=user.username + ' is online'
+    .card-footer
