@@ -21,6 +21,7 @@ html
     script(src='/js/chat-room.js')
     script(src='/js/jquery.validate.js')
     script(src='/js/jquery.validate.min.js')
+    script(src="/js/jwt-decode.min.js")
     script.
       $(document).ready(function(){
         $(document).click(function(e) {
@@ -44,4 +45,5 @@ html
       .row.justify-content-center.h-100
         include partials/sidebar
         .col-md-8.col-xl-8.chat
+          include partials/content
     include partials/profileUser

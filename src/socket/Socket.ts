@@ -24,7 +24,7 @@ class Socket {
         let roomIO = this.io.of('/chat-room');
         roomIO.on('connection', function (socket: any) {
             console.log('Client connected room:', socket.id);
-            chatController.chatRoom(socket);
+            chatController.chatRoom(roomIO, socket);
         });
     }
 }

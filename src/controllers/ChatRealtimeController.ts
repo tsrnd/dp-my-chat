@@ -10,7 +10,7 @@ const roomModel = mongoose.model('Room', Room);
 const userRoomModel = mongoose.model('UserRoom', UserRoom);
 
 export class ChatRealtimeController {
-    public chatRoom = (socket: any) => {
+    public chatRoom = (sockets, socket: any) => {
         socket.on('create-room', async function (data) {
             var token = cookie.parse(socket.request.headers.cookie).token;
             var userDecoded: any = jwt.decode(token, { complete: true });
@@ -21,16 +21,17 @@ export class ChatRealtimeController {
                 name: data.room,
                 room_owner: userJWT._id
             });
-            data.members.forEach(member => {
+            data.members.forEach(async member => {
                 userRoomModel.create({
                     user_id: member,
                     room_id: room._id
                 });
+                var user = await userModel.findOne({ _id: member });
+                sockets.emit('update-list-rooms', data.room, user.id);
             });
             socket.leave(socket.room);
             socket.join(room._id);
             socket.emit('current-room', data.room);
-            socket.emit('update-rooms', data.room);
         });
     }
 

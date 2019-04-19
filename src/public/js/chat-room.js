@@ -3,18 +3,23 @@ var socket = io.connect('/chat-room', {
     'query': 'token=' + token
 });
 socket.on("current-room", function (name) {
+    $("#content-chat").css({
+        "display": "block"
+    });
     document.getElementById("currentRoom").innerHTML = "Chat with " + name;
 });
-socket.on("update-rooms", function (data) {
-    $("#addGroup").after("<li class='d-flex bd-highlight active'>\
-        <div class ='img_cont'>\
-            <img class ='rounded-circle user_img' src='/images/no-img.png'>\
-            <span class='online_icon'></span>\
-        </div>\
-        <div class='user_info'>\
-            <span>" + data + "</span>\
-        </div>\
-    </li>");
+socket.on("update-list-rooms", function (roomname, member_id) {
+    if ((jwt_decode(token).id) == member_id) {
+        $("#addGroup").after("<li class='d-flex bd-highlight'>\
+                <div class ='img_cont'>\
+                    <img class ='rounded-circle user_img' src='/images/no-img.png'>\
+                    <span class='online_icon'></span>\
+                </div>\
+                <div class='user_info'>\
+                    <a href=''>" + roomname + "</a>\
+                </div>\
+            </li>");
+    }
 });
 $(document).ready(function () {
     $('#createRoomForm').validate({
@@ -44,13 +49,12 @@ $(document).ready(function () {
                 members: selected_value
             });
             document.getElementById("createRoomForm").reset();
-            $(".contacts-group>li.active").removeClass("active");
             $("#createRoomModal").modal("hide");
         }
     });
 });
 
-function showCustomers() {
+function listUserSeachByKeyword() {
     var str = document.getElementById("txtUsername").value;
     $.ajax({
         type: "GET",
@@ -65,7 +69,7 @@ function showCustomers() {
     });
 };
 
-function myClick() {
+function listUserSearch() {
     $.ajax({
         type: "GET",
         url: "users",

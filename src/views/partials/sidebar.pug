@@ -11,7 +11,7 @@
         li#addGroup.add
           .d-flex.bd-highlight
             span Group Chat
-            i.fa.fa-plus(aria-hidden='true' data-toggle='modal', data-target='#createRoomModal' onclick='myClick()')
+            i.fa.fa-plus(aria-hidden='true' data-toggle='modal', data-target='#createRoomModal' onclick='listUserSearch()')
             #createRoomModal.modal
               .modal-dialog
                 .modal-content
@@ -22,7 +22,7 @@
                     form#createRoomForm
                       input#txtRoomName(type='text' name='roomname' placeholder='Enter room name')
                       br
-                      input#txtUsername(type='text', oninput='showCustomers()', placeholder='Search users')
+                      input#txtUsername(type='text', oninput='listUserSeachByKeyword()', placeholder='Search users')
                       #checkbox
                       button#btnCreateRoom.btn.btn-primary(type='submit') OK
                       button.btn.btn-danger(type='button', data-dismiss='modal') Close
