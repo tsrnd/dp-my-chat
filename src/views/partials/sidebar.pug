@@ -8,11 +8,25 @@
             i.fas.fa-search
     .card-body.contacts_body
       ui.contacts-group
-        li.add
-          .d-flex.bd-highlight 
-            span(id="group-chat") Group Chat
-            i.fa.fa-plus(aria-hidden='true')
-        each myRoom in myRooms    
+        li#addGroup.add
+          .d-flex.bd-highlight
+            span Group Chat
+            i.fa.fa-plus(aria-hidden='true' data-toggle='modal', data-target='#createRoomModal' onclick='listUserSearch()')
+            #createRoomModal.modal
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    h6.modal-title Create Group Chat
+                    button.close(type='button', data-dismiss='modal') ×
+                  .modal-body
+                    form#createRoomForm
+                      input#txtRoomName(type='text' name='roomname' placeholder='Enter room name')
+                      br
+                      input#txtUsername(type='text', oninput='listUserSeachByKeyword()', placeholder='Search users')
+                      #checkbox
+                      button#btnCreateRoom.btn.btn-primary(type='submit') OK
+                      button.btn.btn-danger(type='button', data-dismiss='modal') Close
+        each myRoom in myRooms
           li
             .d-flex.bd-highlight
               .img_cont

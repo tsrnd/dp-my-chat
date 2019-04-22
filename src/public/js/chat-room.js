@@ -1,0 +1,84 @@
+var token = getCookie('token');
+var socket = io.connect('/chat-room', {
+    'query': 'token=' + token
+});
+socket.on("current-room", function (name) {
+    $("#content-chat").css({
+        "display": "block"
+    });
+    document.getElementById("currentRoom").innerHTML = "Chat with " + name;
+});
+socket.on("update-list-rooms", function (roomname, member_id) {
+    if ((jwt_decode(token).id) == member_id) {
+        $("#addGroup").after("<li class='d-flex bd-highlight'>\
+                <div class ='img_cont'>\
+                    <img class ='rounded-circle user_img' src='/images/no-img.png'>\
+                    <span class='online_icon'></span>\
+                </div>\
+                <div class='user_info'>\
+                    <a href=''>" + roomname + "</a>\
+                </div>\
+            </li>");
+    }
+});
+$(document).ready(function () {
+    $('#createRoomForm').validate({
+        rules: {
+            'roomname': {
+                required: true,
+            },
+            'users[]': {
+                required: true,
+            }
+        },
+        messages: {
+            'roomname': {
+                required: "Room name is required",
+            },
+            'users[]': {
+                required: "Please choose member",
+            }
+        },
+        submitHandler: function (form) {
+            var selected_value = new Array();
+            $(".messageCheckbox:checked").each(function () {
+                selected_value.push($(this).val());
+            });
+            socket.emit("create-room", {
+                room: $("#txtRoomName").val(),
+                members: selected_value
+            });
+            document.getElementById("createRoomForm").reset();
+            $("#createRoomModal").modal("hide");
+        }
+    });
+});
+
+function listUserSeachByKeyword() {
+    var str = document.getElementById("txtUsername").value;
+    $.ajax({
+        type: "GET",
+        url: "users",
+        data: 'q=' + str,
+        success: function (result) {
+            $("#checkbox").html("");
+            result.forEach(function (entry) {
+                $("#checkbox").append("<input type='checkbox' name='users[]' class ='messageCheckbox' value='" + entry._id + "'>" + entry.nickname + "(" + entry.username + ")<br/>");
+            });
+        }
+    });
+};
+
+function listUserSearch() {
+    $.ajax({
+        type: "GET",
+        url: "users",
+        data: 'q=',
+        success: function (result) {
+            $("#checkbox").html("");
+            result.forEach(function (entry) {
+                $("#checkbox").append("<input type='checkbox' name='users[]' class ='messageCheckbox' value='" + entry._id + "'>" + entry.nickname + "(" + entry.username + ")<br/>");
+            });
+        }
+    });
+};

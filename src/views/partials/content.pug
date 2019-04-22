@@ -1,77 +1,76 @@
-.col-md-8.col-xl-8.chat
-  .card
-    .card-header.msg_head
-      .d-flex.bd-highlight
-        .img_cont
-          img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
-          span.online_icon
-        .user_info
-          span Chat with Maryam Naz
-          p 1767 Messages
-        .video_cam
-          span
-            i.fas.fa-video
-          span
-            i.fas.fa-phone
-      span
-        i#action_menu_btn.fas.fa-ellipsis-v
-      .action_menu
-        ul
-          li(data-toggle='modal', data-target='#modalProfile')
-            i.fas.fa-user-circle
-              |  View profile
-          li
-            i.fas.fa-ban
-            |  Block
-    .card-body.msg_card_body
-      .d-flex.justify-content-start.mb-4
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
-        .msg_cotainer
-          | Hi, how are you samim?
-          span.msg_time 8:40 AM, Today
-      .d-flex.justify-content-end.mb-4
-        .msg_cotainer_send
-          | Hi Maryam i am good tnx how about you?
-          span.msg_time_send 8:55 AM, Today
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
-      .d-flex.justify-content-start.mb-4
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
-        .msg_cotainer
-          | I am good too, thank you for your chat template
-          span.msg_time 9:00 AM, Today
-      .d-flex.justify-content-end.mb-4
-        .msg_cotainer_send
-          | You welcome Maryam
-          span.msg_time_send 9:05 AM, Today
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
-      .d-flex.justify-content-start.mb-4
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
-        .msg_cotainer
-          | I am looking for your next templates
-          span.msg_time 9:07 AM, Today
-      .d-flex.justify-content-end.mb-4
-        .msg_cotainer_send
-          | Ok, thank you have a good day
-          span.msg_time_send 9:10 AM, Today
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
-      .d-flex.justify-content-start.mb-4
-        .img_cont_msg
-          img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
-        .msg_cotainer
-          | Bye, see you
-          span.msg_time 9:12 AM, Today
-    .card-footer
-      .input-group
-        .input-group-append
-          span.input-group-text.attach_btn
-            i.fas.fa-paperclip
-        textarea.form-control.type_msg(name='', placeholder='Type your message...')
-        .input-group-append
-          span.input-group-text.send_btn
-            i.fas.fa-location-arrow
+.card#content-chat(style="display:none")
+  .card-header.msg_head
+    .d-flex.bd-highlight
+      .img_cont
+        img.rounded-circle.user_img(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+        span.online_icon
+      .user_info
+        span#currentRoom Chat with Maryam Naz
+        p 1767 Messages
+      .video_cam
+        span
+          i.fas.fa-video
+        span
+          i.fas.fa-phone
+    span
+      i#action_menu_btn.fas.fa-ellipsis-v
+    .action_menu
+      ul
+        li(data-toggle='modal', data-target='#modalProfile')
+          i.fas.fa-user-circle
+            |  View profile
+        li
+          i.fas.fa-ban
+          |  Block
+  .card-body.msg_card_body
+    .d-flex.justify-content-start.mb-4
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+      .msg_cotainer
+        | Hi, how are you samim?
+        span.msg_time 8:40 AM, Today
+    .d-flex.justify-content-end.mb-4
+      .msg_cotainer_send
+        | Hi Maryam i am good tnx how about you?
+        span.msg_time_send 8:55 AM, Today
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+    .d-flex.justify-content-start.mb-4
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+      .msg_cotainer
+        | I am good too, thank you for your chat template
+        span.msg_time 9:00 AM, Today
+    .d-flex.justify-content-end.mb-4
+      .msg_cotainer_send
+        | You welcome Maryam
+        span.msg_time_send 9:05 AM, Today
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+    .d-flex.justify-content-start.mb-4
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+      .msg_cotainer
+        | I am looking for your next templates
+        span.msg_time 9:07 AM, Today
+    .d-flex.justify-content-end.mb-4
+      .msg_cotainer_send
+        | Ok, thank you have a good day
+        span.msg_time_send 9:10 AM, Today
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://www.freshmorningquotes.com/wp-content/uploads/2015/11/cute-and-beautifull-girls-profile-pictures.jpg')
+    .d-flex.justify-content-start.mb-4
+      .img_cont_msg
+        img.rounded-circle.user_img_msg(src='https://instagram.ffra1-1.fna.fbcdn.net/vp/c58b78b9fecf83dd2296c820071807ac/5D2B4E5B/t51.2885-15/e35/47690479_308046789852479_202891512609146280_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk3Njg3MDczMjI3NDAwODMwMA%3D%3D.2')
+      .msg_cotainer
+        | Bye, see you
+        span.msg_time 9:12 AM, Today
+  .card-footer
+    .input-group
+      .input-group-append
+        span.input-group-text.attach_btn
+          i.fas.fa-paperclip
+      textarea.form-control.type_msg(name='', placeholder='Type your message...')
+      .input-group-append
+        span.input-group-text.send_btn
+          i.fas.fa-location-arrow
